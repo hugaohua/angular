@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>解决闪烁</title>
+    <style>
+        .ng-cloak{
+            display: none;
+        }
+    </style>
+</head>
+<body ng-app='myApp' ng-controller='myApp_controller'>
+<div>
+    {{name}}
+</div>
+<div ng-bind='name'></div>
+<!--ng-bind 用属性的方式解决闪烁问题，表达式少时可使用-->
+<div class='ng-cloak'>
+    {{name+ name}}
+    {{name+ name}}
+    {{name+ name}}
+</div>
+<!--等到angular解析完毕后display block-->
+<script src="../angular-1/angular.min.js"></script>
+<script>
+    var app = angular.module('myApp',[]);
+    app.controller('myApp_controller',['$scope',function ($scope) {
+        $scope.name = '小明';
+    }]);
+</script>
+</body>
+</html>
