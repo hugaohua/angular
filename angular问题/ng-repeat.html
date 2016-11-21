@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ng-repeat </title>
+    想要把数组全部遍历需要加 track by $index
+</head>
+<body ng-app='myApp'>
+<div ng-controller='myApp_controller'>
+    <ul>
+        <li ng-repeat='item in data track by $index'>{{item}}</li>
+    </ul>
+</div>
+<script src='../angular-1/angular.min.js'></script>
+<script>
+    var app = angular.module('myApp',[]);
+    app.controller('myApp_controller',['$scope',function ($scope) {
+        var data = [1,2,3,4,1];
+        $scope.data = data;
+    }])
+</script>
+</body>
+</html>
