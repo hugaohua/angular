@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>T隔行变色</title>
+    <style>
+        ul{
+            list-style: none;
+            width:200px;
+            margin:100px auto;
+
+        }
+        li{
+            padding:10px;
+            margin: 2px;
+            border:1px solid black;
+            border-radius: 20px;
+        }
+        .blue{
+            background-color: greenyellow;
+
+        }
+        .red{
+            background-color: palevioletred;
+        }
+        .green{
+            background-color: #2763ff;
+        }
+    </style>
+
+</head>
+<body ng-app='myApp'>
+<div ng-controller='myApp_controller'>
+
+    <ul>
+        <li ng-repeat='item in data' ng-class='{A:"red",B:"blue",C:"green"}[item.salay]'>
+            {{item.name}},{{item.age}}
+        </li>
+    </ul>
+
+</div>
+
+<script src="./angular.min.js"></script>
+<script>
+    var app = angular.module('myApp',[]);
+    app.controller('myApp_controller',['$scope',function ($scope) {
+        var data = [
+            {name:'小明',age:'18',salay:'A'},
+            {name:'小红',age:'17',salay:'B'},
+            {name:'小绿',age:'15',salay:'C'},
+            {name:'小白',age:'14',salay:'B'},
+            {name:'小紫',age:'13',salay:'B'},
+            {name:'小紫',age:'13',salay:'A'},
+            {name:'小紫',age:'13',salay:'C'},
+            {name:'小紫',age:'13',salay:'B'}
+        ];
+        $scope.data = data;
+    }])
+</script>
+</body>
+</html>
