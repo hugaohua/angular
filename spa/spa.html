@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="jquery-2.2.2.min.js"></script>
+    <style>
+        .box{
+            width:500px;
+            height:500px;
+            background-color: red;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+<ul>
+    <li><a href="#find">发现音乐</a></li>
+    <li><a href="#mind">我的音乐</a></li>
+    <li><a href="#firend">朋友</a></li>
+
+</ul>
+<div class="box"></div>
+<script>
+    var box = $('.box');
+    console.log(box);
+
+    window.addEventListener("hashchange",function () {
+        var hash = location.hash;
+        console.log(hash);
+        switch (hash){
+            case '#find':
+                $.get('./find.json', function (data) {
+                    console.log(data);
+                    box.text(data.text);
+                    box.css("backgroundColor","red");
+
+                },"json");
+                break;
+            case '#mind':
+                $.get('./mind.json', function (data) {
+                    console.log(data);
+                    box.text(data.text);
+                    box.css("backgroundColor","blue");
+                },"json");
+                break;
+            case '#firend':
+                $.get('./firend.json', function (data) {
+                    console.log(data);
+                    box.text(data.text);
+                    box.css("backgroundColor","pink");
+                },"json");
+                break;
+        }
+    })
+</script>
+</body>
+</html>

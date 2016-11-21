@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        div{
+            width:400px;
+            margin:100px auto;
+        }
+        p{
+            color: red;
+        }
+    </style>
+</head>
+<body ng-app='myApp'>
+<div ng-controller='demo_myApp'>
+<table border='1px' >
+    <tr>
+        <td>用户名</td>
+        <td><input type="text" ng-model='name'></td>
+    </tr>
+    <tr>
+        <td>密码</td>
+        <td><input type="text" ng-model='password'></td>
+    </tr>
+    <tr>
+        <td>确认密码</td>
+        <td><input type="text" ng-model='dobpass'></td>
+    </tr>
+    <tr>
+        <td>是否同意</td>
+        <td><input type="checkbox" ng-model='isAgree'></td>
+    </tr>
+    <tr>
+<td></td>
+        <td><input type="button" value='注册' ng-click='regiester()'></td>
+    </tr>
+</table>
+<p>{{msg}}</p>
+</div>
+<script src="./angular.min.js"></script>
+<script>
+    var app = angular.module('myApp',[]);
+    app.controller('demo_myApp',function ($scope) {
+            $scope.name = '';
+            $scope.password = '';
+            $scope.dobpass = '';
+            $scope.isAgree = true;
+        $scope.msg = '';
+        $scope.regiester = function () {
+            if($scope.name.length>=6||$scope.name.length<=3){
+                $scope.msg = '用户名或密码不正确';
+                return;
+            }
+            if($scope.password.length<6){
+                $scope.msg = '用户名或密码不正确';
+                return;
+            }
+            if($scope.password!=$scope.dobpass){
+                $scope.msg = '用户名或密码不正确';
+                return;
+            }
+            if(!$scope.isAgree){
+                $scope.msg = '请同意协议';
+                return;
+            }
+            var user = new User($scope.name,$scope.password);
+            var result = user.save();
+            if(result){
+                $scope.msg = '注册成功';
+            }else{
+                $scope.msg = '注册失败';
+            }
+        }
+
+    });
+    function User(userName,passWorld) {
+        this.name = userName;
+        this.pwd = passWorld;
+    }
+    User.prototype.save = function () {
+        var str = localStorage.getItem('users');
+        var arr = JSON.parse(str||'[]');
+        for (var i = 0; i < arr.length; i++) {
+            var item = arr[i];
+            if(item.name == this.name){
+                return false;
+            }
+        }
+        arr.push({name:this.name,pwd:this.pwd});
+        localStorage.setItem('users',JSON.stringify(arr));
+        return true;
+    }
+</script>
+</body>
+</html>

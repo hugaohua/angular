@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>计算器</title>
+</head>
+<body ng-app='myApp' ng-controller = 'myApp_con'>
+<input type="text" ng-model='val1'>
++
+<input type="text" ng-model='val2'>
+<input type="button" ng-click='add()' value='='>
+<input type="text" ng-model='result'>
+<script src="./angular.min.js"></script>
+<script>
+    var app = angular.module('myApp',[]);
+    app.controller('myApp_con',function ($scope) {
+        $scope.val1 = 0;
+        $scope.val2 = 0;
+        $scope.result = 0;
+        $scope.add = function () {
+            $scope.result = ($scope.val1-0)+($scope.val2-0);
+        }
+    })
+</script>
+</body>
+</html>

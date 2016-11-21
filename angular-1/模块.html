@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body ng-app='myApp'>
+
+<div ng-controller='myApp_con'>
+    <input type="text" ng-model='val'>
+</div>
+<script src='./angular.min.js'></script>
+<script>
+    var app = angular.module('myApp',[]);
+    app.controller('myApp_con',function ($scope) {
+        var name = '小明';
+        $scope.val = name;
+    })
+
+</script>
+</body>
+</html>

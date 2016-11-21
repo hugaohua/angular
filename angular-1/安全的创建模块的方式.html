@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>安全的创建模块的方式及模块引入</title>
+</head>
+<body ng-app='myApp' ng-controller='uApp_controller'>
+<div>{{name}}</div>
+<script src="./angular.min.js"></script>
+
+<script>
+    var app = angular.module('myApp',['uApp']);
+    app.controller('controller',['$scope','$log',function ($scope,$log) {
+        
+    }]);
+    var uApp = angular.module('uApp',[]);
+    uApp.controller('uApp_controller',['$scope','$log',function ($scope) {
+        $scope.name = '小红';
+    }])
+</script>
+</body>
+</html>
