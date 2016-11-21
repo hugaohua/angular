@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>T隔行变色</title>
+    <style>
+        ul{
+            list-style: none;
+            width:200px;
+            margin:100px auto;
+
+        }
+        li{
+            padding:10px;
+            margin: 2px;
+            border:1px solid black;
+            border-radius: 20px;
+        }
+        .even{
+            background-color: greenyellow;
+
+        }
+        .odd{
+            background-color: palevioletred;
+        }
+    </style>
+
+</head>
+<body ng-app='myApp'>
+<div ng-controller='myApp_controller'>
+
+    <ul>
+        <li ng-repeat='item in data' class='{{$even?"even":"odd"}}'>
+            {{item.name}},{{item.age}}
+        </li>
+    </ul>
+
+</div>
+
+<script src="./angular.min.js"></script>
+<script>
+    var app = angular.module('myApp',[]);
+    app.controller('myApp_controller',['$scope',function ($scope) {
+        var data = [
+                {name:'小明',age:'18'},
+                {name:'小红',age:'17'},
+                {name:'小蓝',age:'16'},
+                {name:'小绿',age:'15'},
+                {name:'小白',age:'14'},
+                {name:'小紫',age:'13'}
+        ];
+        $scope.data = data;
+    }])
+</script>
+</body>
+</html>
