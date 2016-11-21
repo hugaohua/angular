@@ -33,7 +33,10 @@
 <div ng-controller='myApp_controller'>
 
     <ul>
-        <li ng-repeat='item in data' ng-class='{A:"red",B:"blue",C:"green"}[item.salay]'>
+        <li ng-repeat='item in data'
+            ng-class='{A:"red",B:"blue",C:"green"}[item.salay]'
+        ng-show='item.salay=="A++"'
+        ng-hide='item.salay=="A++"'>
             {{item.name}},{{item.age}}
         </li>
     </ul>
@@ -52,7 +55,8 @@
             {name:'小紫',age:'13',salay:'B'},
             {name:'小紫',age:'13',salay:'A'},
             {name:'小紫',age:'13',salay:'C'},
-            {name:'小紫',age:'13',salay:'B'}
+            {name:'小紫',age:'13',salay:'B'},
+            {name:'马冬梅',age:'43',salay:'A++'}
         ];
         $scope.data = data;
     }])
