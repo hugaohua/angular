@@ -9,11 +9,14 @@
 
 </div>
 <script src="./angular.min.js"></script>
+<!--<script type='text/ng-template' id='myTemplate'></script>-->
 <script>
     var app = angular.module('myApp',[]);
     app.directive('myBtn',['$log',function ($log) {
         var obj = {
-            template:'<button>我是小明</button>'
+//            template:'<button>我是小明</button>'
+//            templateUrl:'./url'
+//            templateUrl:'myTemplate'
         };
         return obj;
     }])
