@@ -59,7 +59,15 @@
             {name:'马冬梅',age:'43',salay:'A++'}
         ];
         $scope.data = data;
-    }])
+    }]);
+
 </script>
+总结 ：
+    1.ng-class='{A:'red',B:"blue" }[item.saly]'
+    ng-class='{"red":true,'text':true }'
+    2.ng-hide="item.saly!="A++";
+    3.ng-show="item.saly!="A++";
+    4.ng-repeat='item in data track by $index';
+    5.ng-bind='name'  class='ng-cloak' 解决页面闪烁问题
 </body>
 </html>
