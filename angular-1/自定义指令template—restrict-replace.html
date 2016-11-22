@@ -2,21 +2,31 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>自定义指令</title>
+    <title>自定义指令template</title>
 </head>
 <body ng-app='myApp'>
-<div my-btn>
+<!--<div my-btn></div>-->
+<!--C 类-->
+<!--<div class="my-btn"></div>-->
+<!--E 元素标签-->
+<!--<my-btn></my-btn>-->
 
-</div>
+
 <script src="./angular.min.js"></script>
 <!--<script type='text/ng-template' id='myTemplate'></script>-->
 <script>
     var app = angular.module('myApp',[]);
     app.directive('myBtn',['$log',function ($log) {
         var obj = {
-//            template:'<button>我是小明</button>'
+            template:'<button>我是小明</button>',
 //            templateUrl:'./url'
 //            templateUrl:'myTemplate'
+//            restrict:'E',自定义标签
+//            restrict:'C',class样式名
+//            restrict:'M',注释
+//            restrict:'A',属性
+//            replace:true 使用注释时使用此属性
+
         };
         return obj;
     }])
