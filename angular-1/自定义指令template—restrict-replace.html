@@ -9,11 +9,15 @@
 <!--C 类-->
 <!--<div class="my-btn"></div>-->
 <!--E 元素标签-->
-<!--<my-btn></my-btn>-->
+<!--<my-btn tp='danger'></my-btn>-->
 
 
 <script src="./angular.min.js"></script>
-<!--<script type='text/ng-template' id='myTemplate'></script>-->
+<!--<script type='text/ng-template' id='myTemplate'>
+<div>
+    <button class='btn btn-{{tp}}'>w我是小明</button>
+</div>
+</script>-->
 <script>
     var app = angular.module('myApp',[]);
     app.directive('myBtn',['$log',function ($log) {
@@ -26,6 +30,11 @@
 //            restrict:'M',注释
 //            restrict:'A',属性
 //            replace:true 使用注释时使用此属性
+//            socpe:{
+//                myclass:'@tp',
+////                tp:'@'简写
+//            不能与replace混用
+//            transclude:true;把标签插入到有这个属性的标签上
 
         };
         return obj;
@@ -34,5 +43,21 @@
 //    template  需要提供一个字符串   添加到指令所在标签的位置；
 
 </script>
+app.directive('属性名'，['$log',function($log){
+            templateUrl:'id名/或者链接',
+            restrict:'ECMA',
+            replace:true 是否替换 和restrict：‘M’注释一起使用，
+            scope：{
+                       属性名：‘@’ 添加到模板的class, class='btn btn-{{tp}}'
+                        }
+            transclude:true;把标签插入到这个属性的标签上   ng-transclude.
+
+
+
+
+}])
+
+
+
 </body>
 </html>
