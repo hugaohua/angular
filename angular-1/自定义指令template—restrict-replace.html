@@ -51,10 +51,11 @@ app.directive('属性名'，['$log',function($log){
                        属性名：‘@’ 添加到模板的class, class='btn btn-{{tp}}'
                         }
             transclude:true;把标签插入到这个属性的标签上   ng-transclude.
-
-
-
-
+            link:function(scope,element,attr){
+                    scope和$scope相同
+                    element,元素
+                    attr   属性
+                        }
 }])
 
 
